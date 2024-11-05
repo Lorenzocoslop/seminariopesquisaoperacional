@@ -1,0 +1,10 @@
+body {
+    font-family: Arial, sans-serif;
+}
+h1 {
+    color: #333;
+}
+#result {
+    border-top: 1px solid #ddd;
+    padding-top: 10px;
+}

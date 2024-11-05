@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora Simplex</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1>Calculadora Simplex</h1>
+        <form id="simplex-form">
+            <div class="mb-3">
+                <label>Qual é o objetivo da função?</label>
+                <select class="form-select" id="objective-type">
+                    <option value="max">Maximizar</option>
+                    <option value="min">Minimizar</option>
+                </select>
+            </div>
+            
+            <div class="mb-3">
+                <label>Função Objetivo:</label>
+                <input type="text" id="objective-function" class="form-control" placeholder="Ex: 3, 5">
+            </div>
+            
+            <div class="mb-3">
+                <label>Número de Restrições:</label>
+                <input type="number" id="num-restrictions" class="form-control">
+                <button type="button" class="btn btn-primary mt-2" onclick="generateConstraints()">Gerar Restrições</button>
+            </div>
+
+            <div id="constraints-container"></div>
+            
+            <button type="button" class="btn btn-success mt-3" onclick="calculateSimplex()">Calcular</button>
+        </form>
+
+        <div id="result" class="mt-4"></div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
