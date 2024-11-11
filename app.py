@@ -11,7 +11,8 @@ def index():
     return render_template('index.html')
 
 def gerar_grafico(c, A, b, signs, resultado):
-    fig, ax = plt.subplots()
+    # Aumentar o tamanho da figura para acomodar a legenda
+    fig, ax = plt.subplots(figsize=(12, 8))  # Aumentando o tamanho da figura
 
     # Limites do gráfico
     x1_vals = range(0, 60)
@@ -37,12 +38,19 @@ def gerar_grafico(c, A, b, signs, resultado):
 
     ax.set_xlabel('X1')
     ax.set_ylabel('X2')
-    ax.legend()
+    
+    # Mover a legenda para fora do gráfico à direita
+    ax.legend(bbox_to_anchor=(1.05, 1), loc='upper left')
+    
     ax.set_title("Método Gráfico - Região Viável para a Solução Ótima")
+
+    # Ajustar o layout para garantir que a legenda não seja cortada
+    plt.tight_layout()
 
     # Converter o gráfico para uma imagem base64 para exibir no HTML
     img = io.BytesIO()
-    plt.savefig(img, format='png')
+    # Salvar com padding extra à direita para a legenda
+    plt.savefig(img, format='png', bbox_inches='tight', dpi=300)
     img.seek(0)
     img_base64 = base64.b64encode(img.getvalue()).decode('utf8')
     plt.close(fig)
