@@ -75,6 +75,7 @@ function calculateSimplex() {
                 <h3>Resultado</h3>
                 <p>Valor ótimo da função objetivo: ${-response.optimal_value}</p>
                 <p>Valores das variáveis: ${response.variables.join(', ')}</p>
+                <img src="data:image/png;base64,${response.grafico}" alt="Gráfico da Solução Ótima" class="img-fluid mt-3">
             `);
         },
         error: function(xhr) {
